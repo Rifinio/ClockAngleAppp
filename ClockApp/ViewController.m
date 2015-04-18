@@ -25,7 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    self.navigationItem.title =  @"Edit Alarm";
     
     // set the local of the date picker to show a 24 h
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"da_DK"];
