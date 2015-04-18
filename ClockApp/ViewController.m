@@ -31,7 +31,7 @@
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"da_DK"];
     [_datePickerTime setLocale:locale];
     
-
+    [self setAngleLabelMessage];
 }
 
 -(float) computeAngleBetweenHandlesForTime:(NSDate*)time
@@ -45,33 +45,31 @@
     // return only [0,12] hour format for ex H:14 (14>12) we return 14-12 = 2
     // because the wall hour only contains values in this range [0,12]
     // for the sake of this excercice H:00 = H:12 = 0
-    
-    NSInteger hour   = ( [components hour] >= 12 ) ? ([components hour] - 12) : [components hour];
-    NSInteger minute = [components minute];
-
-    NSLog(@"hour : %ld  min : %ld",hour,minute);
+    NSInteger hours   = ( [components hour] >= 12 ) ? ([components hour] - 12) : [components hour];
+    NSInteger minutes = [components minute];
     
     //  calculate the minutes handle degree
     //  60 minutes -> 360 degrees <==> 1 min -> 6 degrees
-    float minutes_handle_degree = DEGREE_MIN * minute;
+    float minutes_handle_degree = DEGREE_MIN * minutes;
     
     
     //  calculate the hours handle degree
     //  12 hours -> 360 degrees <==> 1 hour -> 30 degrees
-    float hour_degree = DEGREE_HOUR * hour;
+    float hour_degree = DEGREE_HOUR * hours;
     
     // the hour's handle advance with minutes too. in one hour the handle advances 30 degrees
     // so 60 minutes -> 30 degrees <==> 1 min -> 1/2 = 0.5 degrees
-    float hour_advanced_degree = DEGREE_ADVANCED_BY_MIN * minute;
+    float hour_advanced_degree = DEGREE_ADVANCED_BY_MIN * minutes;
     
+    // the exact hour's handle degree
     float hours_handle_degree = hour_degree + hour_advanced_degree;
     
+    // the angle between the two handles
     angle = fabs(hours_handle_degree - minutes_handle_degree);
     
+    // if the angle > 180 we calculate the other side which eqults to 36- - angle
     angle = ( angle > TOTAL_DEGREES/2 ) ? (TOTAL_DEGREES - angle) : angle;
     
-    NSLog(@"angle %f",angle);
-
     return angle;
 }
 - (void)didReceiveMemoryWarning
@@ -82,10 +80,14 @@
 
 
 - (IBAction)datePickerValueChanged:(id)sender {
-    
+    [self setAngleLabelMessage];
+}
+
+-(void) setAngleLabelMessage
+{
     float angle = [self computeAngleBetweenHandlesForTime:_datePickerTime.date];
-    
-    _labelMessage.text = [NSString stringWithFormat:@"%.2f degrees", angle];
+    _labelMessage.text = [NSString stringWithFormat:@"The smaller angle between\nclock hands is %.2f degrees", angle];
+
 }
 
 @end
