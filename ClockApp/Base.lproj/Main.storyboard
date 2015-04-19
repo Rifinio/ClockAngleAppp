@@ -17,13 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5N6-eF-5Hy">
-                                <rect key="frame" x="30" y="368" width="260" height="51"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nwX-mE-Idu">
-                                <rect key="frame" x="0.0" y="127" width="320" height="215"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="215"/>
                                 <date key="date" timeIntervalSinceReferenceDate="450974198.25486797">
                                     <!--2015-04-17 14:36:38 +0000-->
                                 </date>
@@ -31,6 +26,20 @@
                                     <action selector="datePickerValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Zec-I4-sPy"/>
                                 </connections>
                             </datePicker>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5N6-eF-5Hy">
+                                <rect key="frame" x="30" y="323" width="260" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52b-YO-oJi">
+                                <rect key="frame" x="95" y="410" width="128" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cercle" translatesAutoresizingMaskIntoConstraints="NO" id="QfT-Q6-e4X" userLabel="Image View cercle">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -38,6 +47,7 @@
                     <connections>
                         <outlet property="datePickerTime" destination="nwX-mE-Idu" id="ooN-zi-YZ0"/>
                         <outlet property="labelMessage" destination="5N6-eF-5Hy" id="a6o-X8-z6U"/>
+                        <outlet property="viewClock" destination="52b-YO-oJi" id="j3c-rO-Kyu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -63,6 +73,9 @@
             <point key="canvasLocation" x="380" y="-354"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cercle" width="128" height="128"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
